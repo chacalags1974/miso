@@ -1,0 +1,19 @@
+{
+  "name": "Mi SO Móvil",
+  "short_name": "MiSO",
+  "description": "Un sistema operativo personal basado en HTML",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a1a2e",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

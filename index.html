@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Mi SO Móvil</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="icon-512.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <!-- Barra de estado simulada -->
+    <div class="status-bar">
+        <span>📶 4G</span>
+        <span id="clock">--:--</span>
+        <span>🔋 100%</span>
+    </div>
+
+    <!-- Escritorio (grid de iconos) -->
+    <div id="desktop" class="desktop">
+        <!-- Los íconos de apps se generarán dinámicamente con JS -->
+    </div>
+
+    <!-- Dock inferior -->
+    <div class="dock">
+        <div class="dock-icon" onclick="window.open('https://google.com', '_blank')">🌐 Web</div>
+        <div class="dock-icon" onclick="openInstaller()">➕ Instalar</div>
+        <div class="dock-icon" onclick="location.reload()">🔄</div>
+    </div>
+
+    <!-- Ventana para ejecutar apps (iframe) -->
+    <div id="app-window" class="app-window hidden">
+        <div class="window-header">
+            <span id="window-title">App</span>
+            <button class="close-btn" onclick="closeApp()">✕</button>
+        </div>
+        <iframe id="app-frame" src="" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups"></iframe>
+    </div>
+
+    <!-- Selector de archivos oculto (para instalar apps) -->
+    <input type="file" id="file-input" accept=".html,.htm" style="display:none">
+
+    <script src="assets/script.js"></script>
+    <script>
+        // Registrar Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(reg => console.log('SW registrado', reg));
+        }
+    </script>
+</body>
+</html>
